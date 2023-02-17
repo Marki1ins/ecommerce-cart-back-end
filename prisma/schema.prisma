@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Computer {
+  id           String @id @default(cuid())
+  title        String
+  model        String
+  memory_ram   String
+  disk         String
+  graphic_card String
+  image        String @unique
+  price        Float
+
+  @@map("computers")
+}
+
+model Disk {
+  id    String @id @default(cuid())
+  title String
+  model String
+  size  String
+  image String @unique
+  price Float
+
+  @@map("disks")
+}
